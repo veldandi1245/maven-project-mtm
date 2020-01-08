@@ -27,4 +27,8 @@ http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/
         <jms:inbound-endpoint queue="flights" connector-ref="Active_MQ" doc:name="JMS"/>
         <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
     </flow>
+    <flow name="mavenFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/orders" allowedMethods="GET" doc:name="HTTP"/>
+        <set-payload value="#['Hello Maven']" doc:name="Set Payload"/>
+    </flow>
 </mule>
